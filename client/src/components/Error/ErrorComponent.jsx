@@ -5,7 +5,7 @@ export default function ErrorComponent() {
 
     const location = useLocation(); //allows to acces state set in the navigate hook
     console.log(location)
-    const message = location.state || "Unexpected Error"
+    const message = location.state.message || "Unexpected Error"
 
     return (
         <div className="error-card">

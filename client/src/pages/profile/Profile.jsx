@@ -38,6 +38,7 @@ export default function Profile() {
             <h2>Your Profile</h2>
             <h3><ContactMailIcon/> {user}</h3>
             <button className="profile-button"onClick={handleClick}>Log Out</button>
+            <hr/>
             <SavedRecipes/>
             </>
             : 

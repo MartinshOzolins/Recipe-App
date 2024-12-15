@@ -52,7 +52,7 @@ export default function SavedRecipes() {
             !savedRecipes || savedRecipes.length === 0 ? (
               <div className="empty-card">
                 <h2>No Recipes Saved</h2>
-                <NavLink to="/">Go to Recipes List</NavLink>
+                <NavLink to="/">Recipe List</NavLink>
               </div>
             ) : !recipes || recipes.length === 0 ? (
               <div className="loading-card">

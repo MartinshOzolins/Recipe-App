@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import axios from "axios";
-import bcrypt, {compareSync, hash} from "bcrypt";
+import bcrypt from "bcrypt";
 
 //database
 import db from "./db.js";
@@ -18,14 +18,18 @@ app.use(cors({
     origin: "http://localhost:5173" // Allow requests from the client side
 }))
 
+//input: searchInfo.input, recipesPerPage: searchInfo.recipesPerPage, pageNr: searchInfo.pageNr
 
 //Routes
-
 //GET RECIPES
-app.get("/recipes", async (req, res) => {
+app.post("/recipes", async (req, res) => {
+    const {input, pageNr} = req.body;
+    let skip = (pageNr - 1) * 10
+    const request = (!input ? `?limit=10&skip=${skip}` : `/search?q=${input}&limit=10&skip=${skip}`)
+    console.log(request)
     try {
         //limit to only what is needed
-        const response = await axios.get("https://dummyjson.com/recipes?limit=10&skip=10")
+        const response = await axios.get(`https://dummyjson.com/recipes/${request}`)
 
         if (response.status === 200) {
             const data = response.data.recipes;
@@ -39,6 +43,9 @@ app.get("/recipes", async (req, res) => {
         console.error(err.message)
     }
 })
+
+
+
 
 //REGISTER
 app.post("/register", async (req, res) => {

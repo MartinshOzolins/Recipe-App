@@ -29,22 +29,14 @@ export default function RecipeDetails() {
                 <div className="ingredients-card">
                     <h3>INGREDIENTS:</h3>
                     <ol>    
-                        {singleRecipe.ingredients.map(ingredient => {
-                            return (
-                            <li>{ingredient}</li>
-                            )
-                        })}
+                        {singleRecipe.ingredients.map((ingredient, index) => (<li key={index}>{ingredient}</li>))}
                     </ol>
                 </div>
                 
                 <div className="instructions-card">
                     <h3>INSTRUCTIONS:</h3>
-                    <ol>
-                    {singleRecipe.instructions.map(instruction => {
-                            return (
-                            <li>{instruction}</li>
-                            )
-                        })}
+                    <ol>    
+                        {singleRecipe.instructions.map((instruction, index) => (<li key={index}>{instruction}</li>))}
                     </ol>
                 </div>
 

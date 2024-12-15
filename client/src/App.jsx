@@ -11,7 +11,7 @@ import {
 //pages
 import RecipesList from '../src/pages/RecipesList'
 import LoginRegister from './pages/LoginRegister'
-import ErrorComponent from "../src/Error/ErrorComponent"
+import ErrorComponent from "../src/components/Error/ErrorComponent"
 import Profile from "./pages/profile/Profile"
 
 //context
