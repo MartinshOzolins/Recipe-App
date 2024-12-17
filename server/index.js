@@ -25,7 +25,7 @@ app.use(cors({
 app.post("/recipes", async (req, res) => {
     const {input, pageNr} = req.body;
     let skip = (pageNr - 1) * 10
-    const request = (!input ? `?limit=10&skip=${skip}` : `/search?q=${input}&limit=10&skip=${skip}`)
+    const request = (!input ? `?limit=10&skip=${skip}` : `search?q=${input}&limit=10&skip=${skip}`)
     console.log(request)
     try {
         //limit to only what is needed
