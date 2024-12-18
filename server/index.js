@@ -104,14 +104,11 @@ app.post("/login", async (req, res) => {
         if (!isPasswordCorrect) {
             return res.status(400).json({error: "Password does not match, try again."})
         }
-
-        console.log(userInfoFromDB.rows)
         //if password correct
         let savedRecipesIds = userInfoFromDB.rows.map(({recipe_id}) => ((Number(recipe_id))) ) 
         //extracts the ids of recipes from each row using destructuring
         //if there are no recipes, db returns recipe_id: [null]
         // Number method removes quotes from numbers, if null, returns 0
-        console.log(savedRecipesIds)
 
 
         if (savedRecipesIds[0] === 0) {

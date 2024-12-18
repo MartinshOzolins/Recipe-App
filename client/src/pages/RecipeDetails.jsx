@@ -19,7 +19,7 @@ export default function RecipeDetails() {
 
     useEffect(() => {
         (!singleRecipe && navigate("/", {replace: true}))
-    }, [singleRecipe]) 
+    }, [singleRecipe, navigate]) 
 
     return (
         <>

@@ -42,10 +42,13 @@ export default function LoginRegister() {
                 setIsAuthenticating(false)
                 setError("The email address is invalid")
                 return
-            } else if (userInfo.password.length < 4 || !/[A-Z]/.test(userInfo.password) || !/[a-z]/.test(userInfo.password) || !/[!#$%^&*(),?":{}|<>]/.test(userInfo.password)) {
-                setIsAuthenticating(false)
-                setError("The password should contain at least one upppercase and lowercase letter, one number, and one special character")
-                return
+            } 
+            if (isSignUp) {
+                if (userInfo.password.length < 4 || !/[A-Z]/.test(userInfo.password) || !/[a-z]/.test(userInfo.password) || !/[!#$%^&*(),?":{}|<>]/.test(userInfo.password)) {
+                    setIsAuthenticating(false)
+                    setError("The password should contain at least one upppercase and lowercase letter, one number, and one special character")
+                    return
+                }
             }
 
             //if email and password are valid proceeds with auth
@@ -59,6 +62,7 @@ export default function LoginRegister() {
                 const {error} = await response.json()
                 setError(error)
                 setUserInfo({email: "", password: ""})
+                setIsAuthenticating(false)
             } else {
             setError(null) //clear error state (if exists)
             const {user: {email, recipesIds}} = await response.json()
@@ -82,7 +86,7 @@ export default function LoginRegister() {
 
     return (
         <div className="login-register-container">
-            <p>{error ? error : null}</p>
+            <p className="error-p">{error ? error : null}</p>
             <h2>{!isSignUp ? "Sign in to your account" : "Create a new account"}</h2>
             <div className="input-card">
                 <label htmlFor="email">Email</label>
@@ -102,7 +106,7 @@ export default function LoginRegister() {
             </div>
             <button onClick={() => (handleSubmit())}>{!isAuthenticating ? "Submit" : "Authenticating..."}</button>
             <hr/>
-            <p className="change-auth-paragraph">{!isSignUp ? "Don't have an account?" : "Already have an account?"}</p>
+            <p className="change-auth-p">{!isSignUp ? "Don't have an account?" : "Already have an account?"}</p>
             <button onClick={() => (setAuthMethod((prevValue) => !prevValue))}>{!isSignUp ? "Sign Up" : "Sign in"}</button>
 
         </div>
