@@ -28,18 +28,12 @@ header nav {
     align-items: center;
 }
 
-header nav:first-of-type {
-    margin-left: 10px;
-}
-header nav:last-of-type  {
-    margin-right: 20px;
-}
-
 .nav-left {
+    margin-left: 10px;
     flex: 1;
 }
-
-.nav-right {
+.nav-right  {
+    margin-right: 20px;
     display: flex;
     gap: 15px;
 }
@@ -50,7 +44,6 @@ header nav:last-of-type  {
     font-size: 2rem;
     color: black;
 }
-
 
 .home-page-link:hover, .authenticaiton-link:hover, .profile-page-link:hover {
     color: gray;
@@ -69,7 +62,7 @@ header nav:last-of-type  {
     max-width: 300px;
     font-weight: bold;
 }
-.login-register-container p:last-of-type {
+.change-auth-paragraph {
     margin-top: 10px;
 }
 
@@ -77,15 +70,15 @@ header nav:last-of-type  {
     font-size: 2rem;
 
 }
-.login-register-container .input-card {
+.input-card {
     width: 100%;
 }
 
-.login-register-container .input-card label {
+.input-card label {
     font-size: 1.2rem;
 }
 
-.login-register-container .input-card input {
+.input-card input {
     width: 100%;
     font-size: 1rem;
     line-height: 1.2;
@@ -153,14 +146,13 @@ main {
     transition-duration: 0.2s;
     margin-right: 30px;
 }
-
+.search-button:hover {
+    background-color: #e7e7e7;
+}
 .search-label {
     margin-right: 2px;
 }
 
-.search-button:hover {
-    background-color: #e7e7e7;
-}
 .recipe-list-container {
     display: flex;
     flex-direction: row;
@@ -191,7 +183,7 @@ main {
 
 }
 
-.recipe-list-container .recipe-item:last-child {
+.recipe-item:last-child {
     align-self: flex-start;
 } 
 /* Aligns last child of container */
@@ -204,7 +196,7 @@ main {
 }
 
 
-.recipe-item .recipe-info {
+.recipe-info-container {
     width: 100%;
     height: 30%;
     padding: 10px;
@@ -215,40 +207,40 @@ main {
 }
 
 
-.recipe-info h3 {
+.recipe-info-container h3 {
     font-size: 1.1rem;
     margin-bottom: 2px;
     font-weight: bold;
     white-space: nowrap;
 }
 
-.recipe-info div  {
+.prep-info-and-button-container  {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.recipe-info div div  {
+.preparation-info-container  {
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: start;
 }
 
-.recipe-info div div p {
+.preparation-info-container p {
     display: flex;
     align-items: center;
     overflow: hidden;
 
 }
-.recipe-info div div p svg {
+.preparation-info-container p svg {
     width: 16px;
     height: 16px;
     margin-right: 5px;
 }
 
-.recipe-info div button {
+.recipe-info-container div button {
     padding: 15px 25px 15px 25px;
     border: none;
     background-color: #e7e7e7;
@@ -258,7 +250,7 @@ main {
     transition-duration: 0.2s;
 }
 
-.recipe-info div button:hover {
+.recipe-info-container div button:hover {
     background-color: #dedede;
 }
 
@@ -363,7 +355,7 @@ main {
     justify-content: center;
 }
 
-.profile-container h2 {
+.profile-h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
 }
@@ -374,12 +366,12 @@ main {
     margin-right: 5px;
 }
 
-.profile-container h3 {
+.profile-h3 {
     display: flex;
     align-items: center;
 }
 
-.profile-container .profile-button {
+.profile-button {
     margin: 10px 0px 30px 0px;
     padding: 15px 25px 15px 25px;
     border: none;
@@ -391,12 +383,8 @@ main {
 
 }
 
-.profile-container hr {
-    width: 100%;
-    margin-bottom: 2px;
-}
-
-.recipe-list-container .empty-card {
+/* Saved Recipes empty card */
+.empty-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -404,7 +392,8 @@ main {
     
 
 }
-.recipe-list-container .empty-card a {
+.empty-card a {
+    margin-top: 10px;
     font-size: 1.2rem;
     font-weight: bold;
     padding: 13px 20px 13px 20px;
@@ -414,7 +403,7 @@ main {
     transition-duration: 0.2s;
 }
 
-.recipe-list-container .empty-card a:hover {
+.empty-card a:hover {
     background-color: #e7e7e7;
 }
 

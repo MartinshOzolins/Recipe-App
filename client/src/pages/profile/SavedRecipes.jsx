@@ -5,13 +5,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import DataContext from "../../context/DataContext";
 
-// MUI components
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
+//components
+import RecipeItem from "../../components/RecipeItem"
 
-
-//handleSubmit function for handling save/delete
-import {handleSubmit} from "../RecipesList"
+//utils
+import handleSave from "../../utils/handleSave";
 
 
 export default function SavedRecipes() {
@@ -60,30 +58,7 @@ export default function SavedRecipes() {
               </div>
             ) : (
               recipes.map(recipe => (
-              <NavLink to="/recipe" onClick={() => dispatch({type: "CHECK_RECIPE", payload:     recipe})} key={recipe.id}> 
-                <div className="recipe-item">
-                  <img src={recipe.image} alt={recipe.name}/>
-                  <div className="recipe-info"> 
-                      <h3>{recipe.name}</h3>
-                      <div>
-                          <div>
-                              <p><RestaurantMenuIcon/>{recipe.difficulty}</p>
-                              <p><AccessTimeIcon/>{recipe.prepTimeMinutes}</p>
-                          </div>
-                          {!user || savedRecipes.length === 0 
-                          ? 
-                          <button className="save-button" onClick={(event) => handleSubmit(event, recipe.id, user, savedRecipes, dispatch, navigate)}>SAVE</button> 
-                          : 
-                          savedRecipes.length > 0 && savedRecipes.find((id) => id === recipe.id) 
-                          ?                               
-                          <button className="delete-button" onClick={(event) => handleSubmit(event, recipe.id, user, savedRecipes, dispatch, navigate)}>REMOVE</button>
-                          : 
-                          <button className="save-button" onClick={(event) => handleSubmit(event, recipe.id, user, savedRecipes, dispatch, navigate)}>SAVE</button> 
-                          } 
-                      </div>
-                  </div>   
-                </div>
-              </NavLink>
+                <RecipeItem key={recipe.id} recipe={recipe} handleSave={handleSave} user={user} dispatch={dispatch} savedRecipes={savedRecipes} navigate={navigate}/>
               ))
             )
             }

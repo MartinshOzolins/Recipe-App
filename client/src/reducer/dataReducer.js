@@ -10,7 +10,7 @@ export default function dataReducer(state, action) {
             const {user, savedRecipes} = action.payload
             return {...state, user: user, isLoggedIn: true, savedRecipes: savedRecipes}
         case "LOG_OUT":
-            return {...state, user: null, isLoggedIn: false, savedRecipes: null}
+            return {...state, user: null, isLoggedIn: false, savedRecipes: []}
         case "UPDATE_SAVED_RECIPES_LIST":
             return {...state, savedRecipes: action.payload }
         default:

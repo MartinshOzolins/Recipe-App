@@ -35,10 +35,9 @@ export default function Profile() {
             {user 
             ? 
             <>
-            <h2>Your Profile</h2>
-            <h3><ContactMailIcon/> {user}</h3>
+            <h2 className="profile-h2">Your Profile</h2>
+            <h3 className="profile-h3"><ContactMailIcon/> {user}</h3>
             <button className="profile-button"onClick={handleClick}>Log Out</button>
-            <hr/>
             <SavedRecipes/>
             </>
             : 

@@ -6,7 +6,7 @@ import dataReducer from "../reducer/dataReducer"
 const initialState = {
     user: null,
     isLoggedIn: false,
-    fetchedRecipes: [],
+    fetchedRecipes: null,
     singleRecipe: null,
     savedRecipes: [],
     error: null

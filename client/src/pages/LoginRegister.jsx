@@ -14,12 +14,13 @@ export default function LoginRegister() {
     //state for handling auth method change (login/register)
     const [isSignUp, setAuthMethod] = useState(false)
     //state for authentication button loading process
-    const [isAuthenticating, setisAuthenticating] = useState(false)
+    const [isAuthenticating, setIsAuthenticating] = useState(false)
     const [userInfo, setUserInfo] = useState({
         email: "",
         password: ""
     })
     
+    //error state for showing error
     const [error, setError] = useState(null) 
     
     //changing state everytime input changes
@@ -31,18 +32,18 @@ export default function LoginRegister() {
     }
     
     async function handleSubmit() { 
-        setisAuthenticating(true)
+        setIsAuthenticating(true)
         try {
             if (!userInfo.email || !userInfo.password ) {
-                setisAuthenticating(false)
+                setIsAuthenticating(false)
                 setError("Each input should be completed")
                 return
             } else if (!userInfo.email.includes("@") || userInfo.email.length < 3 || /[A-Z]/.test(userInfo.email) || /[!#$%^&*(),?":{}|<>]/.test(userInfo.email) ) {
-                setisAuthenticating(false)
+                setIsAuthenticating(false)
                 setError("The email address is invalid")
                 return
             } else if (userInfo.password.length < 4 || !/[A-Z]/.test(userInfo.password) || !/[a-z]/.test(userInfo.password) || !/[!#$%^&*(),?":{}|<>]/.test(userInfo.password)) {
-                setisAuthenticating(false)
+                setIsAuthenticating(false)
                 setError("The password should contain at least one upppercase and lowercase letter, one number, and one special character")
                 return
             }
@@ -101,7 +102,7 @@ export default function LoginRegister() {
             </div>
             <button onClick={() => (handleSubmit())}>{!isAuthenticating ? "Submit" : "Authenticating..."}</button>
             <hr/>
-            <p>{!isSignUp ? "Don't have an account?" : "Already have an account?"}</p>
+            <p className="change-auth-paragraph">{!isSignUp ? "Don't have an account?" : "Already have an account?"}</p>
             <button onClick={() => (setAuthMethod((prevValue) => !prevValue))}>{!isSignUp ? "Sign Up" : "Sign in"}</button>
 
         </div>
